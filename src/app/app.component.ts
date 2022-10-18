@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DogService } from './dog.service';
+import { Dog } from './dog';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'recruitment_task_envelo';
+
+  constructor(
+
+  ) {}
+
+  ngOnInit(): void {
+
+  }
+  
+
 }

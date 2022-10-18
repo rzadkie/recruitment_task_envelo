@@ -1,0 +1,33 @@
+<div class="mainContainer">
+<ng-container *ngIf="dogs; else loading">
+
+        <select [(ngModel)]="selected_dog" (ngModelChange)="getDogImg($event)">
+            <option default value="default"> --wybierz rase-- </option> 
+            <ng-container *ngFor="let breed of breeds">         
+                <option *ngFor="let br of breed.sub_breed">{{breed.breed}} {{br}}</option>
+                <ng-container *ngIf="breed.sub_breed >= 0"> 
+                <option> {{breed.breed}}</option>
+            </ng-container>
+
+        </ng-container>
+    </select>
+</ng-container>
+<ng-container *ngIf="selected_dog; else waiting">
+    <div class="dogImgContainer">
+        <img class="dogImg" src="{{img_url}}"/>
+        <p> poczytaj więcej o tej rasie na wikipedii: <a target="_blank" href="{{wikipedia_url}}{{selected_dog}}"> {{selected_dog}} </a></p>
+    </div>
+    
+</ng-container>
+</div>
+
+<ng-template #loading>
+    Loading...
+</ng-template>
+
+<ng-template #waiting>
+    <div class="dogImgContainer">
+        oczekiwanie na wybór
+    </div>
+</ng-template>
+
